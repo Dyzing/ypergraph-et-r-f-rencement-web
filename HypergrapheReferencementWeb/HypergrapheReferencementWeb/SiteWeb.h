@@ -11,11 +11,13 @@ public:
 	std::string siteweb;
 	std::vector<int> vec_id_siteSortant;
 	int node_id;
+	static int static_node_id;
 	float pageRank;
 	SiteWeb();
-	SiteWeb(std::string const& sw, std::vector<int> const & viss, int const& id);
+	SiteWeb(std::string const& sw, std::vector<int> const & viss);
 
-	//bool operator==(SiteWeb const& sw);
+	void toString() const;
+
 private:
 
 };

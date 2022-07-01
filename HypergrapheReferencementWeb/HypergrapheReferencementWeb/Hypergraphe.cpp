@@ -39,7 +39,6 @@ void Hypergraphe::Fill_vec_bs(std::string const& emplacement)
                 {
                     temp_bs.domaine = url_strings[1] + "." + url_strings[2];
                     temp_bs.node_id_bs = std::stoi(strings[0]);
-                    temp_bs.outdegree = std::stoi(strings[1]);
                 }
                 temp_sw.siteweb = temp_bs.domaine;
 
@@ -56,7 +55,7 @@ void Hypergraphe::Fill_vec_bs(std::string const& emplacement)
 
 void Hypergraphe::Fill_vec_bs()
 {
-    for (std::vector<SiteWeb> vec_site : vec_all_site)
+    for (std::vector<SiteWeb>& vec_site : vec_all_site)
     {
         std::string url_strings[10];
         BlocSite temp_bs;
@@ -120,16 +119,22 @@ void Hypergraphe::UpdatePageRank()
     {
         for (SiteWeb &sw : vec_all_site[i])
         {
-            for (BlocSite bs : vec_bs)
+            for (BlocSite bs : vec_bs) // a regarder
             {
-                /*for (int j = 0; j < bs.vec_sw.size(); j++)
-                {
-                    
-                }*/
-                if (std::find(bs.vec_id_sw_sortant.begin(), bs.vec_id_sw_sortant.end(), sw.node_id) != bs.vec_id_sw_sortant.end()) // à refaire en vrai car marche pas
+                if (std::find(bs.vec_id_sw_sortant.begin(), bs.vec_id_sw_sortant.end(), sw.node_id) != bs.vec_id_sw_sortant.end()) 
                 {
                     float sum = 0.25 / (float)bs.nb_arc_bloc;
                     sw.pageRank += sum;
+                }
+            }
+            for (BlocSite& temp_bs : vec_bs)
+            {
+                for (SiteWeb& temp_sw : temp_bs.vec_sw)
+                {
+                    if (temp_sw.node_id == sw.node_id)
+                    {
+                        temp_sw.pageRank = sw.pageRank;
+                    }
                 }
             }
         }
@@ -174,4 +179,20 @@ void Hypergraphe::init_vec_nab()
             temp_bs.vec_nb_arc_bloc.push_back(0);
         }
     }
+}
+
+void Hypergraphe::toString() const
+{
+    for (BlocSite bs : vec_bs)
+    {
+        std::cout << "\n Domaine du bloc " + std::to_string(bs.node_id_bs) + " : " + bs.domaine << std::endl;
+        std::cout << "Sites web du bloc : \n" << std::endl;
+        for (SiteWeb sw : bs.vec_sw)
+        {
+            sw.toString();
+        }
+        std::cout << "\n" << std::endl;
+    }
+
+    std::cout << "\n" << std::endl;
 }

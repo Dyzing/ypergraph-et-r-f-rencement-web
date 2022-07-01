@@ -17,10 +17,10 @@ int main()
 #pragma region RegionSiteWeb
     std::vector<SiteWeb> vec_site1;
 
-    SiteWeb siteA("http://www.bose.res.in/~library/FILES/ditya.htm", {4, 8}, 0);
-    SiteWeb siteB("http://www.bose.res.in/~library/FILES/arun.htm", {}, 1);
-    SiteWeb siteC("http://www.bose.res.in/~library/FILES/jaydeep.htm", {}, 2);
-    SiteWeb siteD("http://www.bose.res.in/~library/FILES/librarian.htm", {}, 3);
+    SiteWeb siteA("http://www.bose.res.in/~library/FILES/ditya.htm", {4, 8}); //0
+    SiteWeb siteB("http://www.bose.res.in/~library/FILES/arun.htm", {}); //1
+    SiteWeb siteC("http://www.bose.res.in/~library/FILES/jaydeep.htm", {}); //2
+    SiteWeb siteD("http://www.bose.res.in/~library/FILES/librarian.htm", {}); //3
 
     vec_site1.push_back(siteA);
     vec_site1.push_back(siteB);
@@ -29,10 +29,10 @@ int main()
 
     std::vector<SiteWeb> vec_site2;
 
-    SiteWeb siteE("http://indianarmy.nic.in/arkargil/arguj.htm", {}, 4);
-    SiteWeb siteF("http://indianarmy.nic.in/arkargil/arj&k.htm", {3}, 5);
-    SiteWeb siteG("http://indianarmy.nic.in/arkargil/armizo.htm", {3}, 6);
-    SiteWeb siteH("http://indianarmy.nic.in/arkargil/arorrisa.htm", {4}, 7);
+    SiteWeb siteE("http://indianarmy.nic.in/arkargil/arguj.htm", {}); //4
+    SiteWeb siteF("http://indianarmy.nic.in/arkargil/arj&k.htm", {3}); //5
+    SiteWeb siteG("http://indianarmy.nic.in/arkargil/armizo.htm", {3}); //6
+    SiteWeb siteH("http://indianarmy.nic.in/arkargil/arorrisa.htm", {4}); //7
 
     vec_site2.push_back(siteE);
     vec_site2.push_back(siteF);
@@ -41,8 +41,8 @@ int main()
 
     std::vector<SiteWeb> vec_site3;
 
-    SiteWeb siteI("http://glide.net.in/connectivity.htm", {4, 3}, 8);
-    SiteWeb siteJ("http://glide.net.in/consultancy.htm", {6, 7}, 9);
+    SiteWeb siteI("http://glide.net.in/connectivity.htm", {4, 3}); //8
+    SiteWeb siteJ("http://glide.net.in/consultancy.htm", {6, 7}); //9
 
     vec_site3.push_back(siteI);
     vec_site3.push_back(siteJ);
@@ -58,8 +58,11 @@ int main()
 
     hyper.UpdatePageRank();
 
+    // --------------------------------------------------------------------------------------------
 
-    std::cout << "Hello World!\n";
+    hyper.toString();
+
+    std::cout << "\n";
 }
 
 // Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage

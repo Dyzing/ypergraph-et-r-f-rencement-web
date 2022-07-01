@@ -17,6 +17,8 @@ public:
 	void UpdatePageRank();
 	void Fill_vec_nb_arc_bloc();
 	void init_vec_nab();
+
+	void toString() const;
 private:
 
 };
