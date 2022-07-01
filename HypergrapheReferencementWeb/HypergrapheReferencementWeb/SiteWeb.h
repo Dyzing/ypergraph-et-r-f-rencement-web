@@ -15,7 +15,7 @@ public:
 	float pageRank;
 	SiteWeb();
 	SiteWeb(std::string const& sw, std::vector<int> const & viss);
-
+	std::string display_vec_id_ss() const;
 	void toString() const;
 
 private:

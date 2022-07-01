@@ -13,7 +13,28 @@ SiteWeb::SiteWeb(std::string const& sw, std::vector<int> const& viss)
 {
 }
 
+std::string SiteWeb::display_vec_id_ss() const
+{
+	std::string res = "{";
+
+	if (vec_id_siteSortant.size() > 0)
+	{
+		for (int i = 0; i < vec_id_siteSortant.size() - 1; i++)
+		{
+			res += std::to_string(vec_id_siteSortant[i]);
+			if(i < vec_id_siteSortant.size() - 1)
+				res += ", ";
+		}
+		res += std::to_string(vec_id_siteSortant[vec_id_siteSortant.size() - 1]);
+	}
+
+	res += "}";
+
+	return res;
+}
+
 void SiteWeb::toString() const
 {
-	std::cout << "Nom du site " + std::to_string(node_id) + " avec le PageRank = " + std::to_string(pageRank) + " : " + siteweb << std::endl;
+	std::cout << "Nom du site " + std::to_string(node_id) + " avec le PageRank = " + std::to_string(pageRank) +
+		" redirigeant vers les site " + display_vec_id_ss() + " : " + siteweb  << std::endl;
 }

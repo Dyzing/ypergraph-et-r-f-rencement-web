@@ -1,7 +1,4 @@
-﻿  Hypergraphe.cpp
-D:\UQAC\Session 3\Structure de données\ypergraph-et-r-f-rencement-web\HypergrapheReferencementWeb\HypergrapheReferencementWeb\Hypergraphe.cpp(118,23): warning C4018: '<' : incompatibilité signed/unsigned
-D:\UQAC\Session 3\Structure de données\ypergraph-et-r-f-rencement-web\HypergrapheReferencementWeb\HypergrapheReferencementWeb\Hypergraphe.cpp(126,31): warning C4244: 'initialisation' : conversion de 'double' en 'float', perte possible de données
-D:\UQAC\Session 3\Structure de données\ypergraph-et-r-f-rencement-web\HypergrapheReferencementWeb\HypergrapheReferencementWeb\Hypergraphe.cpp(148,23): warning C4018: '<' : incompatibilité signed/unsigned
-D:\UQAC\Session 3\Structure de données\ypergraph-et-r-f-rencement-web\HypergrapheReferencementWeb\HypergrapheReferencementWeb\Hypergraphe.cpp(150,27): warning C4018: '<' : incompatibilité signed/unsigned
-D:\UQAC\Session 3\Structure de données\ypergraph-et-r-f-rencement-web\HypergrapheReferencementWeb\HypergrapheReferencementWeb\Hypergraphe.cpp(177,27): warning C4018: '<' : incompatibilité signed/unsigned
+﻿  SiteWeb.cpp
+D:\UQAC\Session 3\Structure de données\ypergraph-et-r-f-rencement-web\HypergrapheReferencementWeb\HypergrapheReferencementWeb\SiteWeb.cpp(22,21): warning C4018: '<' : incompatibilité signed/unsigned
+D:\UQAC\Session 3\Structure de données\ypergraph-et-r-f-rencement-web\HypergrapheReferencementWeb\HypergrapheReferencementWeb\SiteWeb.cpp(25,9): warning C4018: '<' : incompatibilité signed/unsigned
   HypergrapheReferencementWeb.vcxproj -> D:\UQAC\Session 3\Structure de données\ypergraph-et-r-f-rencement-web\HypergrapheReferencementWeb\Debug\HypergrapheReferencementWeb.exe

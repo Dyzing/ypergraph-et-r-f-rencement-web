@@ -56,10 +56,14 @@ int main()
 
     hyper.Fill_vec_nb_arc_bloc();
 
+    std::cout << "\nAffichage des informations des site web avant PageRank\n" << std::endl;
+    hyper.toString();
+
+    std::cout << "\n ------------------------------------------------------------------------------------\n" << std::endl;
+
+    std::cout << "\nAffichage des informations des site web apres PageRank tries selon leur reputation\n" << std::endl;
     hyper.UpdatePageRank();
-
-    // --------------------------------------------------------------------------------------------
-
+    hyper.sort_vec_bs_sw();
     hyper.toString();
 
     std::cout << "\n";

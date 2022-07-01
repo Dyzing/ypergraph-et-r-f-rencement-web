@@ -181,6 +181,16 @@ void Hypergraphe::init_vec_nab()
     }
 }
 
+void Hypergraphe::sort_vec_bs_sw()
+{
+    for (BlocSite& bs : vec_bs)
+    {
+        std::sort(bs.vec_sw.begin(), bs.vec_sw.end(), [](SiteWeb a, SiteWeb b) {
+            return a.pageRank > b.pageRank;
+            });
+    }
+}
+
 void Hypergraphe::toString() const
 {
     for (BlocSite bs : vec_bs)
