@@ -10,49 +10,6 @@ Hypergraphe::Hypergraphe()
 {
 }
 
-void Hypergraphe::Fill_vec_bs(std::string const& emplacement)
-{
-
-	std::ifstream fichier("in-2004.nodes.txt", std::ios::in);  // on ouvre le fichier en lecture
-
-    if (fichier)  // si l'ouverture a réussi
-    {
-        // instructions
-        BlocSite temp_bs;
-
-        temp_bs.domaine = "";
-
-
-        for (std::string line; std::getline(fichier, line); ) 
-        {
-            std::string strings[5];
-            split(line, ' ', strings);
-
-            std::string url_strings[10];
-            if (strings[2][0] == 'h' && strings[2][1] == 't' && strings[2][2] == 't' && strings[2][3] == 'p')
-            {
-                split(strings[2], '.', url_strings);
-                SiteWeb temp_sw;
-
-
-                if (temp_bs.domaine == "")
-                {
-                    temp_bs.domaine = url_strings[1] + "." + url_strings[2];
-                    temp_bs.node_id_bs = std::stoi(strings[0]);
-                }
-                temp_sw.siteweb = temp_bs.domaine;
-
-
-            }
-        }
-
-
-        fichier.close();  // on ferme le fichier
-    }
-    else  // sinon
-       std::cerr << "Impossible d'ouvrir le fichier !" << std::endl;
-}
-
 void Hypergraphe::Fill_vec_bs()
 {
     for (std::vector<SiteWeb>& vec_site : vec_all_site)
@@ -72,6 +29,7 @@ void Hypergraphe::Fill_vec_bs()
             {
                 temp_bs.vec_id_sw_sortant.insert(temp_bs.vec_id_sw_sortant.end(), sw.vec_id_siteSortant.begin(), sw.vec_id_siteSortant.end());
             }
+            temp_bs.vec_id_sw_interne.push_back(sw.node_id);
         }
 
         std::sort(temp_bs.vec_id_sw_sortant.begin(), temp_bs.vec_id_sw_sortant.end());
@@ -119,13 +77,17 @@ void Hypergraphe::UpdatePageRank()
     {
         for (SiteWeb &sw : vec_all_site[i])
         {
-            for (BlocSite bs : vec_bs) // a regarder
+            for (int j = 0; j < vec_bs.size(); j++)//(BlocSite bs : vec_bs) // a regarder
             {
-                if (std::find(bs.vec_id_sw_sortant.begin(), bs.vec_id_sw_sortant.end(), sw.node_id) != bs.vec_id_sw_sortant.end()) 
+                if (std::find(vec_bs[j].vec_id_sw_sortant.begin(), vec_bs[j].vec_id_sw_sortant.end(), sw.node_id) != vec_bs[j].vec_id_sw_sortant.end())
                 {
-                    float sum = 0.25 / (float)bs.nb_arc_bloc;
+                    if (std::find(vec_bs[j].vec_id_sw_interne.begin(), vec_bs[j].vec_id_sw_interne.end(), sw.node_id) == vec_bs[j].vec_id_sw_interne.end())
+                    {
+                    float sum = 0.25 / (float)vec_bs[j].nb_arc_bloc;
                     sw.pageRank += sum;
+                    }
                 }
+                
             }
             for (BlocSite& temp_bs : vec_bs)
             {

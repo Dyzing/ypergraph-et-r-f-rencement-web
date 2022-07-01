@@ -14,6 +14,7 @@ public:
 	std::vector<SiteWeb> vec_sw;
 	std::vector<int> vec_id_sw_sortant;
 	std::vector<int> vec_nb_arc_bloc;
+	std::vector<int> vec_id_sw_interne;
 	int nb_arc_bloc;
 
 	BlocSite();
