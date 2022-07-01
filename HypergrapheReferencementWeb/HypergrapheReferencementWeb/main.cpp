@@ -32,7 +32,7 @@ int main()
     SiteWeb siteE("http://indianarmy.nic.in/arkargil/arguj.htm", {}, 4);
     SiteWeb siteF("http://indianarmy.nic.in/arkargil/arj&k.htm", {3}, 5);
     SiteWeb siteG("http://indianarmy.nic.in/arkargil/armizo.htm", {3}, 6);
-    SiteWeb siteH("http://indianarmy.nic.in/arkargil/arorrisa.htm", {}, 7);
+    SiteWeb siteH("http://indianarmy.nic.in/arkargil/arorrisa.htm", {4}, 7);
 
     vec_site2.push_back(siteE);
     vec_site2.push_back(siteF);
@@ -53,6 +53,8 @@ int main()
     hyper.vec_all_site.push_back(vec_site3);
 
     hyper.Fill_vec_bs();
+
+    hyper.Fill_vec_nb_arc_bloc();
 
     hyper.UpdatePageRank();
 

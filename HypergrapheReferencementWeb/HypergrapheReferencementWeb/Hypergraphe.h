@@ -15,6 +15,8 @@ public:
 	void Fill_vec_bs();
 	void split(std::string str, char seperator, std::string res_strings[]);
 	void UpdatePageRank();
+	void Fill_vec_nb_arc_bloc();
+	void init_vec_nab();
 private:
 
 };

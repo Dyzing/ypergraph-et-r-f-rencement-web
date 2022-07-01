@@ -1,6 +1,10 @@
 #include "Hypergraphe.h"
 #include <fstream>
 #include <algorithm>
+#include <vector>
+#include <numeric>
+#include <functional>
+#include <string>
 
 Hypergraphe::Hypergraphe()
 {
@@ -124,10 +128,50 @@ void Hypergraphe::UpdatePageRank()
                 }*/
                 if (std::find(bs.vec_id_sw_sortant.begin(), bs.vec_id_sw_sortant.end(), sw.node_id) != bs.vec_id_sw_sortant.end()) // à refaire en vrai car marche pas
                 {
-                    float sum = 0.25 / (float)bs.vec_id_sw_sortant.size();
+                    float sum = 0.25 / (float)bs.nb_arc_bloc;
                     sw.pageRank += sum;
                 }
             }
+        }
+    }
+}
+
+void Hypergraphe::Fill_vec_nb_arc_bloc()
+{
+    init_vec_nab();
+
+    for (int i = 0; i < vec_bs.size(); i++) // parcours les BlocSite pour les remplir
+    {
+        for (int j = 0; j < vec_bs.size(); j++) // parcours les autres BlocSite pour regarder si l'idNode est contenu en eux
+        {
+            if (j != i)
+            {
+                for (int temp_id_node_sortant : vec_bs[i].vec_id_sw_sortant)
+                {
+                    for (SiteWeb sw : vec_bs[j].vec_sw)
+                    {
+                        if (temp_id_node_sortant == sw.node_id)
+                        {
+                            if (vec_bs[i].vec_nb_arc_bloc[j] != 1)
+                            {
+                                ++vec_bs[i].vec_nb_arc_bloc[j];
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        vec_bs[i].nb_arc_bloc = std::accumulate(vec_bs[i].vec_nb_arc_bloc.begin(), vec_bs[i].vec_nb_arc_bloc.end(), 0);
+    }
+}
+
+void Hypergraphe::init_vec_nab()
+{
+    for (BlocSite &temp_bs : vec_bs)
+    {
+        for (int k = 0; k < vec_bs.size(); k++)
+        {
+            temp_bs.vec_nb_arc_bloc.push_back(0);
         }
     }
 }
